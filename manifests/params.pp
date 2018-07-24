@@ -63,10 +63,6 @@ class vmwaretools::params {
     $install_command = "${vmwaretools::working_dir}/vmware-tools-distrib/vmware-install.pl -d"
   }
 
-  # Workaround for 'purge' bug on RH-based systems
-  # https://projects.puppetlabs.com/issues/2833
-  # https://projects.puppetlabs.com/issues/11450
-  # https://tickets.puppetlabs.com/browse/PUP-1198
   $purge_package_ensure = $facts['os']['family'] ? {
     'RedHat' => absent,
     'Suse'   => absent,
